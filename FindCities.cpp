@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+//procedurely
 int main() {
     // Create an array of cities
     std::string cities[4] = {"New York", "Los Angeles", "Chicago", "New Jersey"};
@@ -12,7 +12,7 @@ int main() {
     // Loop through the array and check each city
     for (const auto& city : cities) {
         // Check if the city starts with "New"
-        if (city.substr(0, 3) == "New") {
+        if ( !city.empty() && city.substr(0, 3) == "New") {
             newCities.push_back(city);
         }
     }
