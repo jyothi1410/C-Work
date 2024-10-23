@@ -1,54 +1,59 @@
 #include <iostream>
 using namespace std;
 
-class D{
+class Device{
     private:
-        int _id;
+        string _name,_location,_model,_type;
 	public:
-		D(int id):_id{id}{
-				cout<<"D Constructed"<<endl;
+		 Device(string name, string location, string model, string type)
+            : _name(name), _location(location), _model(model), _type(type){
+				cout<<"Device Constructed :"<<endl;
+				cout<<"Name ---"<<name<<endl;
+				cout<<"Location ---"<<location<<endl;
+				cout<<"Model ---"<<model<<endl;
+				cout<<"Type ---"<<type<<endl;
 		}
-		~D(){
-				cout<<"D Destructed"<<endl;
+		~Device(){
+				cout<<"Device Destructed"<<endl;
 		}
 		
 };//Device
-class P:public D{
+class Printer:public Device{
 	public:
 
-		P():D(100){
-				cout<<"P Constructed"<<endl;
+		Printer():Device("A1","hyd","BHK","woei"){
+				cout<<"Printer Constructed"<<endl;
 		}
-		~P(){
-				cout<<"P Destructed"<<endl;
+		~Printer(){
+				cout<<"Printer Destructed"<<endl;
 		}
 		void pm(){
 		     	cout<<"print method invoked"<<endl;
 		}
 }; //Printer
-class S:public D{
+class Scanner:public Device{
 	public:
-		S():D(200){
-				cout<<"S Constructed"<<endl;
+		Scanner():Device("A2","vij","KOP","ihi"){
+				cout<<"Scanner Constructed"<<endl;
 		}
-		~S(){
-				cout<<"S Destructed"<<endl;
+		~Scanner(){
+				cout<<"Scanner Destructed"<<endl;
 		}
 		void sm(){
 		    	cout<<"scan method invoked"<<endl;
 		}
 }; //Scanner
-class PS:public D{
+class PrinterScanner:public Device{
     private:
     //dependency
-    P pInstance;
-    S sInstance;
+    Printer pInstance;
+    Scanner sInstance;
 		public:
-		PS():D::D(100){
-				cout<<"PS Constructed"<<endl;
+		PrinterScanner():Device::Device("PrinterScanner","BOSCH","GYH","ouio"){
+				cout<<"PrinterScanner Constructed"<<endl;
 		}
-		~PS(){
-				cout<<"PS Destructed"<<endl;
+		~PrinterScanner(){
+				cout<<"PrinterScanner Destructed"<<endl;
 		}
 		void pm(){
 		    pInstance.pm();
@@ -59,7 +64,7 @@ class PS:public D{
 }; //PrinterScanner
 
 int main(){
- PS psInstance;
+ PrinterScanner psInstance;
  psInstance.pm();
  psInstance.sm();
  return 0;
