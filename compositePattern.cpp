@@ -56,6 +56,7 @@ class PrinterScanner:public Device{
 				cout<<"PrinterScanner Destructed"<<endl;
 		}
 		void pm(){
+		  //  delegation
 		    pInstance.pm();
 		}
 		void sm(){
