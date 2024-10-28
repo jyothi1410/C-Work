@@ -105,5 +105,5 @@ abstraction:: ::exp : virtual void
 					  drive() = 0;
 
 runtime polymarphisum / late binding-- vitable complex
--- do not use virtual method instead of use template program to reduce compilation time an memory
+-- do not use virtual method instead of use template program to reduce compilation time in memory
 

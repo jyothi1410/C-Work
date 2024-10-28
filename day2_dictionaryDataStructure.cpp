@@ -28,6 +28,7 @@ int main(){
 #include <iostream>
 #include <vector>
 using namespace std;
+#include <stdexcept>
 
 template <typename K, typename V>
 class Dictionary {
@@ -52,7 +53,7 @@ public:
                 return item.second;
             }
         }
-        throw out_of_range("Key not found");
+        throw out_of_range("Key not found");   //out_of_range - don't use it will kill the stack flow  
     }
 
     // Overload the << operator for printing the dictionary
@@ -71,10 +72,14 @@ int main() {
     deviceCodeMap.add(2, "D2");
     deviceCodeMap.add(3, "D3");
     deviceCodeMap.add(4, "D4");
-
-    string deviceName = deviceCodeMap[2];
-    cout << deviceName << endl; // output: D2
-
+    try {
+        // Try to access the value with key 2
+        string deviceName = deviceCodeMap[2];
+        cout << "Device name for key 2: " << deviceName << endl; // Output: D2
+    } catch (const out_of_range& e) {
+        // Catch the out_of_range exception
+        cout << "Error: " << e.what() << endl;
+    }
     // Dump all the items from deviceCodeMap
     cout << deviceCodeMap;
 
@@ -89,12 +94,6 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
-
 ------------
 // #include <iostream>
 // #include <vector>
@@ -117,9 +116,6 @@ int main() {
 // int main() {
     
     
-    
-    
-    
 //     /*output
 //     Key : Value
 //     1 : D1
@@ -132,4 +128,4 @@ int main() {
 
 
 key value pair 
-use template
+assignment - it should be compile. use vector,template and not use matrix, multi dimensional array
